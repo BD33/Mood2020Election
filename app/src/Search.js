@@ -13,7 +13,7 @@ class Search extends Component {
       componentDidMount() {  
         const DiscoveryV1 = require('ibm-watson/discovery/v1');
         const { IamAuthenticator } = require('ibm-watson/auth');
-                
+ 
         const discovery = new DiscoveryV1({  
           serviceUrl: process.env.REACT_APP_DISCOVERY_URL,
           version: '2020-09-10',
