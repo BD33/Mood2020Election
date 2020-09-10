@@ -14,7 +14,7 @@ class Search extends Component {
         const { IamAuthenticator } = require('ibm-watson/auth');
         
         const discovery = new DiscoveryV1({
-          version: '2020-08-27',
+          version: '2019-11-22',
           authenticator: new IamAuthenticator({
             apikey: process.env.REACT_APP_DISCOVERY_API_KEY,
           }),
