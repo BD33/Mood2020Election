@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { env } from 'process';
 
 class Search extends Component {
     constructor(props) {
@@ -12,35 +13,21 @@ class Search extends Component {
       componentDidMount() {  
         const DiscoveryV1 = require('ibm-watson/discovery/v1');
         const { IamAuthenticator } = require('ibm-watson/auth');
-        
-        const discovery = new DiscoveryV1({
-          version: '2020-08-27',
-          authenticator: new IamAuthenticator({
-            apikey: process.env.REACT_APP_DISCOVERY_API_KEY,
-          }),
+                
+        const discovery = new DiscoveryV1({  
           serviceUrl: process.env.REACT_APP_DISCOVERY_URL,
+          version: '2020-09-10',
+          authenticator: new IamAuthenticator({
+            apikey: process.env.REACT_APP_DISCOVERY_API_KEY
+          }),
         });
         
        console.log("APIKEY :" + process.env.REACT_APP_DISCOVERY_API_KEY)
 
 
-       const createEnvironmentParams = {
-        name: 'my_environment',
-        description: 'My environment',
-        size: 'LT',
-      };
-      
-      discovery.createEnvironment(createEnvironmentParams)
-        .then(environment => {
-          console.log(JSON.stringify(environment, null, 2));
-        })
-        .catch(err => {
-          console.log('error:', err);
-        });
-
 
        const queryParams = {
-        environmentId: '{environment_id}',
+        environmentId: 'system',
         collectionId: 'news-en',
       };
       
@@ -51,8 +38,6 @@ class Search extends Component {
         .catch(err => {
           console.log('error:', err);
         });
-
-
 
      }
 
@@ -66,10 +51,10 @@ class Search extends Component {
     render() {
         return (
             <div>
-                SearchBar
+                Watson Discovery News
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Name:
+
                         <input type="text" value={this.state.value} onChange ={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
