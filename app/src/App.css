@@ -24,8 +24,35 @@
   color: white;
 }
 
+.Widget-header {
+  display: inline;
+  color: white;
+  font-weight: bold;
+  background-color: #ff2a2a5c;
+  border-color: black;
+  border-width: 2px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 0px 5px #A0A0A0, inset 0px 10px 27px -8px #141414, inset 0px -10px 27px -8px #A31925, 5px 5px 15px 5px rgba(0,0,0,0); 
+  box-shadow: 0px 0px 0px 5px #A0A0A0, inset 0px 10px 27px -8px #141414, inset 0px -10px 27px -8px #A31925, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.Widget-WordCloud {
+  align-items: center;
+  vertical-align: top;
+  background-color:  #000000;
+  width: 300px;
+  height: 300px;
+  justify-content: center;
+  color: white;
+  border-radius: 10%;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+  box-shadow: 0px 2px 2px 5px #A0A0A0;
 }
 
 @keyframes App-logo-spin {
