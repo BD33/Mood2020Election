@@ -85,13 +85,18 @@ class Search extends Component {
     render() {
         return (
             <div>
-                Watson Discovery News
+                <h1 class="display-4">Watson Discovery News</h1>
+                <p class="text-secondary">Search by topic and see a score</p>
+            
                 <form onSubmit={this.handleSubmit}>
+                <div class="form-group">
+
                     <label>
-                        <input type="text" value={this.state.value} onChange ={this.handleChange} />
+                        <input type="text" value={this.state.value} onChange ={this.handleChange} class="form-control" />
                     </label>
                  
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit" class="btn btn-warning ml-3"/>
+                    </div>
                 </form>
                <h5> { this.getResults() }</h5>
             </div>
