@@ -12,7 +12,7 @@ class WordCloud extends Component {
         //colors = [],
         fontFamily: '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif;',
         fontStyle: 'bold, 400, 700',
-        padding: 5,
+        padding: 10,
         fontSize: [32, 144]
 
     }
@@ -59,10 +59,9 @@ class WordCloud extends Component {
 
     render() {
         return ( 
-        
         <div className="Widget-WordCloud">
-            <h3 className="Widget-header">Hot Terms in the News</h3>
-            <ReactWordcloud words={this.words} minSize={[300, 300]} options={this.options} />
+            <div className="Widget-header">Hot Terms in the News</div>
+            <div><ReactWordcloud words={this.words} minSize={[300, 200]} options={this.options} /></div>
         </div>
         )
     }
