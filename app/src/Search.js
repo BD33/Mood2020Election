@@ -70,12 +70,21 @@ class Search extends Component {
         var jsonRep = JSON.parse(this.state.result)
         if(jsonRep.result.results[0]){
         console.log(jsonRep.result.results[0].title)
-        return jsonRep.result.results.map((articles) => <li>{
-          articles.title}  <p>
-          Score: {articles.enriched_text.sentiment.document.score} 
-          </p>
-           Label: {articles.enriched_text.sentiment.document.label}
-        </li>);
+        return jsonRep.result.results.map((articles) => <tr>
+           <div class="row m-2">
+           <div class="col-sm">
+         <td> {articles.title}  </td>
+         </div>
+         <div class="col-sm">
+
+          <td>{articles.enriched_text.sentiment.document.score} </td> 
+          </div>
+          <div class="col-sm">
+
+          <td> {articles.enriched_text.sentiment.document.label}</td>
+          </div>
+          </div>
+        </tr>);
         }  
        return "Did not find any articles"
       }
@@ -98,7 +107,16 @@ class Search extends Component {
                     <input type="submit" value="Submit" class="btn btn-warning ml-3"/>
                     </div>
                 </form>
+          
+                <div class="container">
+         
+        
+
+          <table>
                <h5> { this.getResults() }</h5>
+          </table>
+    
+</div>
             </div>
         )
     }
