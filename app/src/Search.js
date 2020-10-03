@@ -6,7 +6,7 @@ const { IamAuthenticator } = require('ibm-watson/auth');
 
 const discovery = new DiscoveryV1({  
   serviceUrl: process.env.REACT_APP_DISCOVERY_URL,
-  version: '2020-09-22',
+  version: '2020-09-30',
   authenticator: new IamAuthenticator({
     apikey: process.env.REACT_APP_DISCOVERY_API_KEY
   }),
@@ -69,13 +69,25 @@ class Search extends Component {
         if(this.state.result.length > 1){
         var jsonRep = JSON.parse(this.state.result)
         if(jsonRep.result.results[0]){
-        console.log(jsonRep.result.results[0].title)
-        return jsonRep.result.results.map((articles) => <li>{
-          articles.title}  <p>
-          Score: {articles.enriched_text.sentiment.document.score} 
-          </p>
-           Label: {articles.enriched_text.sentiment.document.label}
-        </li>);
+    
+        return jsonRep.result.results.map((articles) => <tr>
+           <div class="row m-2">
+           <div class="col-sm-1">
+         
+          <td>{articles.publication_date.substring(0,10)}</td>
+          </div>
+          <div class="col-md-6 offset-md-1">
+         <td> <a href={articles.url} class="text-light">{articles.title}</a></td>
+         </div>
+          <div class="col-md offset-md-1">
+          <td> Tone: {articles.enriched_text.sentiment.document.label} 
+          {articles.enriched_text.sentiment.document.label === 'negative' ? '😳' : ''}
+          {articles.enriched_text.sentiment.document.label === 'positive' ? '😁' : ''}
+          {articles.enriched_text.sentiment.document.label === 'neutral' ? '😐' : ''}
+           </td>
+          </div>
+          </div>
+        </tr>);
         }  
        return "Did not find any articles"
       }
@@ -98,7 +110,16 @@ class Search extends Component {
                     <input type="submit" value="Submit" class="btn btn-warning ml-3"/>
                     </div>
                 </form>
+          
+                <div class="container">
+         
+        
+
+          <table>
                <h5> { this.getResults() }</h5>
+          </table>
+    
+</div>
             </div>
         )
     }
